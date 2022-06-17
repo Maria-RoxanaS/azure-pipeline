@@ -21,7 +21,7 @@ stages:
         displayName: My first job
         steps:
           - script: 
-              echo $(a)>file.txt
+              echo ${{ variables.a }}>file.txt
             displayName: 'Write a into a file'
           - publish: file.txt
             displayName: 'Publish artifact'
