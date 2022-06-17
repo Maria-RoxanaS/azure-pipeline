@@ -20,8 +20,9 @@ stages:
       - job:
         displayName: My first job
         steps:
-          - script: 
-              echo ${{ variables.a }}>file.txt
+          - script: |
+              echo $(${{ variables.a }})>file.txt
             displayName: 'Write a into a file'
+
           - publish: file.txt
             displayName: 'Publish artifact'
