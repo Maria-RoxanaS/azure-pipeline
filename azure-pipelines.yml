@@ -7,8 +7,9 @@ trigger:
 - main
 
 variables:
-  - name: a
-    value: 2
+- name: a
+  value: 2
+
 pool:
   vmImage: ubuntu-latest
 
