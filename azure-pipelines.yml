@@ -21,7 +21,7 @@ stages:
         displayName: My first job
         steps:
           - script: |
-              echo $(${{ variables.a }})>file.txt
+              echo "${{ variables.a }}">file.txt
             displayName: 'Write a into a file'
 
           - publish: file.txt
