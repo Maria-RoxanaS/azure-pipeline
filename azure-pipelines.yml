@@ -8,6 +8,8 @@ trigger:
 
 variables:
 - name: a
+  value: 1
+- name: b
   value: 2
 
 pool:
@@ -21,8 +23,11 @@ stages:
         displayName: My first job
         steps:
           - script: |
-              echo "${{ variables.a }}">file.txt
-            displayName: 'Write a into a file'
+              Sum=$((${{ variables.a }}+${{ variables.b }}))
+              echo "${{ variables.a }}">sum_script.txt
+              echo "${{ variables.b }}">>sum_script.txt
+              echo $Sum>sum_script.txt
+            displayName: 'Write sum in file'
 
-          - publish: file.txt
+          - publish: sum_script.txt
             displayName: 'Publish artifact'
