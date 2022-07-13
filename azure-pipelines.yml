@@ -45,3 +45,16 @@ stages:
 
           - publish: sum_bash.txt
             displayName: 'Publish artifact'
+      
+      - job:
+        displayName: Powershell step
+        steps:
+          - powershell: |
+              Sum=$((${{ variables.a }}+${{ variables.b }}))
+              Write-Host "${{ variables.a }}">sum_ps.txt
+              Write-Host "${{ variables.b }}">>sum_ps.txt
+              Write-Host $Sum>>sum_ps.txt
+            displayName: 'Write sum in file'
+
+          - publish: sum_ps.txt
+            displayName: 'Publish artifact'
