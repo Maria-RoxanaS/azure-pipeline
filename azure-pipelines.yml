@@ -20,7 +20,7 @@ stages:
     displayName: My first stage
     jobs:
       - job:
-        displayName: My first job
+        displayName: Script step
         steps:
           - script: |
               Sum=$((${{ variables.a }}+${{ variables.b }}))
@@ -30,4 +30,18 @@ stages:
             displayName: 'Write sum in file'
 
           - publish: sum_script.txt
+            displayName: 'Publish artifact'
+
+      - job:
+        displayName: Bash step
+        steps:
+          - bash: |
+              which bash
+              Sum=$((${{ variables.a }}+${{ variables.b }}))
+              echo "${{ variables.a }}">sum_bash.txt
+              echo "${{ variables.b }}">>sum_bash.txt
+              echo $Sum>>sum_bash.txt
+            displayName: 'Write sum in file'
+
+          - publish: sum_bash.txt
             displayName: 'Publish artifact'
